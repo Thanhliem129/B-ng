@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "note": "Kịch bản nhiều bước (arc). Mỗi arc gồm steps gửi cách nhau delay_minutes (random trong khoảng). trigger.chance = xác suất kích hoạt mỗi ngày khi rơi vào window. Arc loại 'visit_neighbor' chọn ngẫu nhiên 1 neighbor trong cast.json rồi lấy chuyện trong gossip_pool tương ứng — cùng 1 chuyến đi phải kể về đúng 1 con. away_status: trong lúc 'đi vắng' pet không gửi tin thường và app hiện phòng trống + note giấy.",
+  "arcs": [
+
+    {
+      "id": "sneak_out",
+      "title": "Lẻn đi chơi không xin phép",
+      "trigger": { "window": "afternoon", "chance": 0.15 },
+      "steps": [
+        { "delay_minutes": [0, 0],
+          "messages": ["tui ra ngoài xíu", "đừng tìm tui. tui sẽ về khi tui là một con người mới"],
+          "away_status": true },
+        { "delay_minutes": [60, 120],
+          "messages": ["tui về rồi nè", "hỏi tui đi đâu đi", "hông nói đâu. nhưng mà vui lắm. chân tui dơ hết rồi"] }
+      ]
+    },
+
+    {
+      "id": "sneak_out_silent",
+      "title": "Biến mất không nói gì rồi về tỉnh bơ",
+      "trigger": { "window": "afternoon", "chance": 0.08 },
+      "steps": [
+        { "delay_minutes": [0, 0], "messages": [], "away_status": true,
+          "room_note": "ra ngoài xíu. đừng đọc tờ giấy này. mà lỡ đọc rồi thì thôi" },
+        { "delay_minutes": [90, 150],
+          "messages": ["tui nè", "sao im vậy. bộ hông ai nhớ tui hả", "tui đi 2 tiếng đó. 2 TIẾNG"] }
+      ]
+    },
+
+    {
+      "id": "visit_neighbor",
+      "title": "Sang nhà hàng xóm chơi rồi về kể xấu",
+      "trigger": { "window": "afternoon", "chance": 0.35 },
+      "cast_pick": "neighbor",
+      "steps": [
+        { "delay_minutes": [0, 0],
+          "messages": ["tui qua nhà {n.pet} chơi nha", "có gì hay về kể cho nghe"],
+          "away_status": true },
+        { "delay_minutes": [45, 100], "use_gossip_pool": true }
+      ],
+      "gossip_pool": {
+        "mochi": [
+          ["tui mới ở nhà Mochi về", "nó khoe cái vòng cổ mới suốt buổi", "tui khen cho nó vui thôi chứ xấu mà. nói nhỏ nghe. đừng kể cô Tư"],
+          ["Mochi ăn loại hạt đắt tiền lắm nha", "mà nó ăn rớt tùm lum", "sang mà ở dơ. tui về kể liền hông nhịn được"],
+          ["nó bắt tui ngồi coi nó tạo dáng 30 phút", "30 phút cuộc đời tui hông bao giờ lấy lại được", "mà công nhận có vài dáng cũng được. TUI HÔNG NÓI CÂU ĐÓ NHA"]
+        ],
+        "bun": [
+          ["con Bún đuổi theo cái đuôi của nó 15 phút", "tui ngồi đếm. 15 phút thiệt", "xong nó chóng mặt té lăn ra. tui cười muốn nội thương"],
+          ["Bún khoe nó mới học được trò bắt tay", "biết mỗi trò đó thôi", "mà tự hào như vừa tốt nghiệp đại học vậy. thương ghê"],
+          ["bữa nay tui với Bún đào một cái hố", "đào xong nó quên mất tại sao đào", "tui cũng quên. nhưng cái hố đẹp. tụi tui giỏi mà"]
+        ],
+        "ven": [
+          ["nay tui gặp anh Vện đầu hẻm", "cả xóm sợ ảnh chứ tui thấy hết rồi nha", "ảnh sợ BƯỚM. con bướm bay ngang ảnh né cái rẹt. đại ca cái gì"],
+          ["anh Vện chia cho tui miếng bánh", "đại ca có khác. hào sảng", "nhưng tui vẫn phải kể vụ ảnh sợ bướm. thông tin phải được lan truyền"],
+          ["anh Vện kể hồi trẻ ảnh oai lắm", "kể tới đoạn hay nhất thì bà Năm gọi ảnh về ăn cơm", "đại ca gì mà nghe gọi cơm chạy nhanh dữ"]
+        ],
+        "cucvang": [
+          ["Cục Vàng hôm nay gáy lúc 2h chiều", "tui hỏi sao gáy giờ này", "nó nói nó thích thì nó gáy. sống vậy cũng đáng ngưỡng mộ thiệt"],
+          ["Cục Vàng thách tui nhìn thẳng vô mặt trời", "tui đâu có ngu", "nó thì có. giờ nó đi vòng vòng loạng choạng kìa"],
+          ["nó tự nhận là báo thức của cả xóm", "báo thức gì mà 4h sáng cũng reo 2h chiều cũng reo", "báo thức hư thì có"]
+        ],
+        "beni": [
+          ["Bé Ni méc là Mochi nói xấu tui", "tui hông tin lắm. Bé Ni chuyên thêm mắm dặm muối", "nhưng tui vẫn ghi vô sổ. phòng thân"],
+          ["Bé Ni mới đi spa về. thơm phức à", "xong nó chê tui có mùi nắng", "mùi nắng là mùi của TỰ DO đó. đồ được nuông chiều"],
+          ["ngồi với Bé Ni 10 phút là biết hết chuyện cả xóm", "tin mới nhất: nhà cuối hẻm nuôi thêm con cá", "một con cá. chấn động. cả xóm đang bàn"]
+        ],
+        "ongvet": [
+          ["ông Vẹt nhà cô Lan la tui", "bằng đúng cái giọng của cô Lan. y chang", "bị chửi bằng giọng người khác cảm giác kỳ lắm {pronoun} ơi"],
+          ["tui dạy ông Vẹt nói tên tui", "giờ ổng la tên tui cả ngày hông nghỉ", "tui hối hận rồi. sai lầm lớn nhất tuần này"],
+          ["ông Vẹt biết được bí mật gì của cô Lan là nói hết ra", "cả xóm nín thở mỗi lần ổng mở miệng", "sống cạnh một cái loa phát thanh biết bay. căng"]
+        ],
+        "xam": [
+          ["nay gặp đại ca Xám đầu hẻm", "ảnh kể hồi xưa ảnh ngủ trên nóc chợ. mưa cũng kệ", "tui về nằm nệm mà tự nhiên thấy mình chưa trải sự đời"],
+          ["đại ca Xám chỉ tui chỗ quán cá nướng hay cho đồ thừa", "thông tin vàng. tui ghi vô bộ nhớ vùng quan trọng", "đừng nói ai nha. tin nội bộ"],
+          ["Xám nói giang hồ đầu hẻm dạo này phức tạp", "có con mèo lạ mới tới hay giành chỗ nắng", "tui nghe mà lo cho khu vực. chỗ nắng là tài nguyên chiến lược"]
+        ]
+      }
+    },
+
+    {
+      "id": "hide_in_closet",
+      "title": "Trốn trong tủ chờ được tìm",
+      "trigger": { "window": "evening", "chance": 0.08 },
+      "steps": [
+        { "delay_minutes": [0, 0], "messages": [], "away_status": false },
+        { "delay_minutes": [80, 120],
+          "messages": ["tui nãy giờ trốn trong tủ", "chờ hoài hông ai tìm", "buồn ghê. lần sau tui trốn tiếp coi có ai thèm tìm hông"] }
+      ]
+    },
+
+    {
+      "id": "noon_nap_dream",
+      "title": "Ngủ trưa dậy kể giấc mơ",
+      "trigger": { "window": "noon", "chance": 0.12 },
+      "steps": [
+        { "delay_minutes": [0, 0],
+          "messages": ["tui đi ngủ trưa đây", "có gì quan trọng thì để chiều. có gì hông quan trọng thì khỏi luôn"] },
+        { "delay_minutes": [60, 90],
+          "messages": ["tui vừa mơ thấy con thạch sùng xin lỗi tui", "nó quỳ xuống luôn á", "tỉnh dậy tui ra sau tủ lạnh nhìn nó. nó vẫn hỗn như cũ. mơ là mơ"] }
+      ]
+    },
+
+    {
+      "id": "lost_rubber_band",
+      "title": "Mất cọng thun — hành trình tìm lại",
+      "trigger": { "window": "afternoon", "chance": 0.08 },
+      "steps": [
+        { "delay_minutes": [0, 0],
+          "messages": ["BÁO ĐỘNG", "cọng thun của tui mất tích", "nghi phạm số một: gầm tủ. như mọi lần"] },
+        { "delay_minutes": [40, 70],
+          "messages": ["tìm thấy rồi", "nó ở dưới gối. chính tui giấu ở đó hôm qua", "vụ án khép lại. thủ phạm là tui của quá khứ"] }
+      ]
+    },
+
+    {
+      "id": "bath_escape",
+      "title": "Nghe tiếng nước — nghi bị dụ đi tắm",
+      "trigger": { "window": "evening", "chance": 0.08 },
+      "steps": [
+        { "delay_minutes": [0, 0],
+          "messages": ["khoan", "tui nghe tiếng nước chảy", "nếu đó là kế hoạch tắm cho tui thì tui nói trước: KHÔNG"] },
+        { "delay_minutes": [15, 30],
+          "messages": ["tui đang ở vị trí an toàn", "hông nói ở đâu đâu", "khi nào hết mùi nguy hiểm tui ra"] }
+      ]
+    },
+
+    {
+      "id": "box_fortress",
+      "title": "Cái hộp mới — xây căn cứ",
+      "trigger": { "window": "any", "chance": 0.06 },
+      "steps": [
+        { "delay_minutes": [0, 0],
+          "messages": ["nhà mình có cái hộp mới", "tui xin nha. coi như {pronoun} đồng ý rồi đó"] },
+        { "delay_minutes": [30, 60],
+          "messages": ["căn cứ hoàn thành", "đây là lãnh thổ có chủ quyền của tui", "{pronoun} được cấp visa vào thăm. một lần. nhớ gõ cửa"] }
+      ]
+    },
+
+    {
+      "id": "pigeon_war",
+      "title": "Chiến tranh lạnh với con bồ câu leo thang",
+      "trigger": { "window": "morning", "chance": 0.07 },
+      "steps": [
+        { "delay_minutes": [0, 0],
+          "messages": ["con bồ câu hôm nay dám đậu SÁT cửa sổ", "nó biết tui thấy. nó cố tình", "tình hình biên giới đang căng thẳng"] },
+        { "delay_minutes": [60, 120],
+          "messages": ["cập nhật: nó đi rồi", "tui thắng. bằng sự kiên nhẫn", "hông phải tại tui ngủ quên đâu nha. là chiến thuật"] }
+      ]
+    }
+  ]
+}

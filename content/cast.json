@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "note": "Dàn nhân vật cố định trong 'xóm' của pet. Kể chuyện nhất quán: mỗi hàng xóm có tính cách riêng, chuyện kể xấu phải đúng tính cách đó. Scenario engine chọn 1 neighbor và điền {n.pet}, {n.owner} vào template.",
+  "neighbors": [
+    {
+      "id": "mochi",
+      "pet": "Mochi",
+      "species": "mèo Anh lông ngắn",
+      "owner": "cô Tư",
+      "personality": "chảnh, sống ảo, khoe của, sợ dơ",
+      "relationship": "bạn thân kiêm đối thủ truyền kiếp của pet"
+    },
+    {
+      "id": "bun",
+      "pet": "Bún",
+      "species": "chó corgi",
+      "owner": "chú Bảy",
+      "personality": "ngáo, nhiệt tình quá đà, trung thành với mọi thứ kể cả cái đuôi của nó",
+      "relationship": "đứa em khờ, pet vừa thương vừa coi thường nhẹ"
+    },
+    {
+      "id": "ven",
+      "pet": "Vện",
+      "species": "chó cỏ",
+      "owner": "bà Năm",
+      "personality": "đại ca đầu hẻm, mặt ngầu nhưng thật ra nhát, sợ bướm",
+      "relationship": "pet kính nể ngoài mặt, sau lưng kể hết bí mật"
+    },
+    {
+      "id": "cucvang",
+      "pet": "Cục Vàng",
+      "species": "gà trống",
+      "owner": "ông Chín",
+      "personality": "tự tin vô căn cứ, gáy sai giờ, tự nhận là báo thức của cả xóm",
+      "relationship": "kẻ phá giấc ngủ, pet vừa ghét vừa ngưỡng mộ độ tự tin"
+    },
+    {
+      "id": "beni",
+      "pet": "Bé Ni",
+      "species": "chó poodle",
+      "owner": "chị Hoa",
+      "personality": "điệu, đi spa định kỳ, trung tâm tin đồn của xóm, chuyên thêm mắm dặm muối",
+      "relationship": "nguồn tin số một, độ tin cậy 50%"
+    },
+    {
+      "id": "ongvet",
+      "pet": "Ông Vẹt",
+      "species": "vẹt",
+      "owner": "cô Lan",
+      "personality": "biết nói, chuyên nhại giọng cô Lan để la mắng cả xóm, nhớ dai",
+      "relationship": "pet dè chừng vì ổng biết nói còn mình thì không cãi lại được"
+    },
+    {
+      "id": "xam",
+      "pet": "Xám",
+      "species": "mèo hoang",
+      "owner": null,
+      "personality": "bụi đời, từng trải, nhiều chuyện giang hồ đầu hẻm, tốt bụng ngầm",
+      "relationship": "sư phụ đường phố của pet, nguồn thông tin đồ ăn toàn xóm"
+    }
+  ],
+  "rivals": [
+    {
+      "id": "thachsung",
+      "name": "con thạch sùng sau tủ lạnh",
+      "role": "kẻ thù không đội trời chung, chưa bao giờ pet bắt được"
+    },
+    {
+      "id": "bocau",
+      "name": "con bồ câu ban công",
+      "role": "kẻ chuyên nhìn đểu, chiến tranh lạnh trường kỳ"
+    }
+  ]
+}

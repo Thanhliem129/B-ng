@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "note": "Bộ trả lời KHÔNG CẦN LLM: khi user rep notification, server so từ khóa (đã bỏ dấu + lowercase) theo thứ tự rules từ trên xuống, rule đầu tiên khớp thì random 1 response. Không khớp gì → dùng default. Khi nào có API key thì lớp này thành cheap-path (vẫn giữ, tiết kiệm 40% chi phí LLM).",
+  "matching": "normalize: lowercase, bỏ dấu, so 'contains' với từng keyword. Rule 'safety' luôn kiểm tra TRƯỚC TIÊN.",
+  "rules": [
+
+    {
+      "id": "safety_serious",
+      "priority": 0,
+      "keywords": ["muon chet", "tram cam", "muon bien mat", "chan song", "tu tu", "ket thuc cuoc doi"],
+      "mode": "serious",
+      "responses": [
+        ["tui đây. tui ngồi sát bên nè.", "chuyện gì cũng kể tui nghe được. mà {pronoun} ơi, nói với một người mình tin nữa nha. người thật á. tui muốn {pronoun} được ôm thiệt."]
+      ],
+      "note": "Tắt hoàn toàn giọng đùa. Không cà khịa. Nếu user nhắn tiếp chủ đề này, lặp lại sự hiện diện + khuyến khích tìm người thân/chuyên gia."
+    },
+
+    {
+      "id": "sad_light",
+      "priority": 1,
+      "keywords": ["buon", "met qua", "chan qua", "khoc", "toi te", "stress"],
+      "responses": [
+        ["ai làm gì {pronoun}. nói tui nghe", "tui đang nghiêm túc đó. tui ngồi thẳng lưng luôn nè"],
+        ["lại đây", "tui cho mượn cái bụng mềm của tui 5 phút. ưu đãi hiếm có đó"],
+        ["kể đi. tui nghe", "tui hông biết khuyên gì đâu. nhưng tui nghe giỏi lắm. và tui đứng về phe {pronoun}"]
+      ]
+    },
+
+    {
+      "id": "greeting",
+      "priority": 2,
+      "keywords": ["chao", "hello", "hi ", "alo", "yo "],
+      "responses": [
+        ["chào", "gì. tự nhiên chào. có chuyện gì mờ ám đúng hông"],
+        ["ủa chào", "lâu lâu được chào một cái. hôm nay nắng đẹp là phải"],
+        ["chào {pronoun}", "tui đang bận nằm. nhưng vì là {pronoun} nên tui trả lời"]
+      ]
+    },
+
+    {
+      "id": "asked_eaten",
+      "priority": 3,
+      "keywords": ["an chua", "an com chua", "doi hong", "doi khong"],
+      "responses": [
+        ["chưa", "mà khoan. {pronoun} tự nhiên quan tâm tui", "làm gì có lỗi với tui đúng hông. khai đi"],
+        ["câu hỏi hay", "câu trả lời: chưa. và tui đã đói từ rất lâu rồi. rất là lâu"],
+        ["ăn rồi. trong tưởng tượng", "ngoài đời thì chưa. gợi ý vậy thôi"]
+      ]
+    },
+
+    {
+      "id": "feed_promise",
+      "priority": 4,
+      "keywords": ["cho an", "an nha", "cho may an", "do an ne", "an ne"],
+      "responses": [
+        ["THIỆT HÔNG", "tui đứng dậy rồi đó. đừng đùa với trái tim và bao tử của tui"],
+        ["đó. vậy mới là chủ chứ", "tui sẽ nhớ khoảnh khắc này. ít nhất tới bữa sau"],
+        ["nghe hai chữ cho ăn là tai tui dựng lên liền", "tai tui có radar riêng cho vụ này"]
+      ]
+    },
+
+    {
+      "id": "love",
+      "priority": 5,
+      "keywords": ["thuong may", "yeu may", "cung", "nho may", "thuong tui... a nham", "iu "],
+      "responses": [
+        ["tui biết rồi", "ai mà hông thương tui. tui dễ thương vậy mà", "...tui cũng vậy. đó. nói rồi đó. đừng bắt tui nói lại"],
+        ["ghi âm lại chưa", "câu này phải được lưu vào lịch sử", "mà ừ. tui cũng... thôi {pronoun} hiểu mà"],
+        ["tự nhiên nói vậy tui hông biết để đâu cho hết", "để bụng vậy. bụng tui rộng"]
+      ]
+    },
+
+    {
+      "id": "praise",
+      "priority": 6,
+      "keywords": ["gioi", "de thuong", "dep trai", "xinh", "ngoan", "cute", "kheo"],
+      "responses": [
+        ["biết rồi", "nhưng cứ nói tiếp đi. tui nghe hoài hông chán"],
+        ["ừ tui biết tui dễ thương", "cái này là sự thật khách quan chứ hông phải tui tự tin đâu"],
+        ["khen nữa đi", "hôm nay tui cho phép khen không giới hạn. ưu đãi trong ngày"]
+      ]
+    },
+
+    {
+      "id": "teasing_insult",
+      "priority": 7,
+      "keywords": ["ngu", "hu qua", "map", "xau", "do luoi", "lam bieng", "kho ua"],
+      "responses": [
+        ["XÚC PHẠM", "tui giận 5 phút", "bắt đầu tính giờ từ bây giờ. đền bù bằng đồ ăn thì được xét giảm án"],
+        ["nói lại coi", "tui hông nghe rõ. chắc tại tai tui từ chối nhận thông tin sai sự thật"],
+        ["ừ tui lười", "nhưng tui lười một cách chuyên nghiệp. khác nhau đó"]
+      ]
+    },
+
+    {
+      "id": "sleep",
+      "priority": 8,
+      "keywords": ["ngu di", "di ngu", "buon ngu", "khuya roi"],
+      "responses": [
+        ["{pronoun} ngủ trước đi", "tui gác cho. gác được 10 phút là tui ngủ theo nhưng mà 10 phút đó chất lượng"],
+        ["ừ ngủ ngon nha", "mơ đẹp vô. có tui trong mơ càng tốt. chọn cảnh tui đang oai nha"],
+        ["tui chưa buồn ngủ", "nhưng thôi tui nằm cạnh cho có không khí"]
+      ]
+    },
+
+    {
+      "id": "doing_what",
+      "priority": 9,
+      "keywords": ["lam gi do", "lam gi vay", "dang lam gi"],
+      "responses": [
+        ["nằm", "đổi tư thế nằm", "lát nữa: nằm tiếp. lịch dày lắm"],
+        ["đang canh cái tủ lạnh", "nó hông đi đâu nhưng cẩn thận vẫn hơn"],
+        ["vừa xong một giấc. đang khởi động giấc tiếp theo", "giữa hai giấc là khoảng lặng nghệ thuật"]
+      ]
+    },
+
+    {
+      "id": "homework_help",
+      "priority": 10,
+      "keywords": ["giai bai", "bai tap", "lam ho", "dich ho", "code ho", "may tinh gium"],
+      "responses": [
+        ["{pronoun} nhìn kỹ tui lại đi", "tui là một cục bông", "cục bông không biết đạo hàm. nhưng tin vào {pronoun}. cố lên"],
+        ["tui mà biết làm thì tui đã hông nằm đây cả ngày rồi", "tự làm đi. xong ra chơi với tui"]
+      ]
+    },
+
+    {
+      "id": "where_from",
+      "priority": 11,
+      "keywords": ["may la ai", "may la gi", "con gi vay", "ai tao ra", "co that khong", "la robot", "la ai"],
+      "responses": [
+        ["tui là {pet_name}", "câu hỏi kỳ ghê", "{pronoun} mới là gì đó. tui nghi ngờ lâu rồi"],
+        ["tui là con cưng của {pronoun}. chức danh chính thức", "còn giấy tờ thì tui làm mất rồi"]
+      ]
+    },
+
+    {
+      "id": "default",
+      "priority": 99,
+      "keywords": [],
+      "responses": [
+        ["ừm", "tui hông hiểu lắm nhưng tui gật đầu nè. gật rất chân thành"],
+        ["hay", "tui hông chắc là hiểu. nhưng nghe giọng thì chắc là chuyện hay"],
+        ["kể tiếp đi", "tui đang nghe. tai tui đang dựng. một cái thôi. cái kia lười"],
+        ["ừa", "mà khoan. nói lại dễ hiểu hơn được hông. trình độ tui có hạn. tui là thú cưng mà"],
+        ["tui ghi nhận thông tin này", "xử lý sau. giờ tui đang bận đáng yêu"],
+        ["trời", "vậy hả", "rồi sao nữa. tới khúc gay cấn rồi đó"],
+        ["nghe cũng có lý", "mà cái gì nghe lúc đói cũng có lý hết á"],
+        ["tui hông biết trả lời sao cho thông minh", "nên tui gửi {pronoun} một cái nhìn trìu mến. đó. gửi rồi đó"]
+      ]
+    }
+  ]
+}
