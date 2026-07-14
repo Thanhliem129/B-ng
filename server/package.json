@@ -1,0 +1,13 @@
+{
+  "name": "bong-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Bông Phase 0 server — pet brain chạy content JSON, zero-LLM, zero-dependency",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "start": "node src/index.ts",
+    "dev": "node --watch src/index.ts",
+    "check": "tsc --noEmit"
+  }
+}

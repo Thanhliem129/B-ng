@@ -1,0 +1,23 @@
+# Server
+node_modules/
+server/data/
+*.log
+
+# Secrets — KHÔNG BAO GIỜ commit
+service-account*.json
+google-services.json
+.env
+
+# Android
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+android/captures/
+*.apk
+*.aab
+
+# OS
+Thumbs.db
+.DS_Store

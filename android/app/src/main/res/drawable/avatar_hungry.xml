@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bông đói: mắt tròn to nhìn chằm chằm, miệng chờ đồ ăn -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <path android:pathData="M54,54m-50,0a50,50 0,1 1,100 0a50,50 0,1 1,-100 0" android:fillColor="#FFE8C9" />
+    <path android:pathData="M54,54m-42,0a42,42 0,1 1,84 0a42,42 0,1 1,-84 0" android:fillColor="#FFD9A8" />
+    <path android:pathData="M28,22 L38,34 L24,38 Z" android:fillColor="#FFC98A" />
+    <path android:pathData="M80,22 L70,34 L84,38 Z" android:fillColor="#FFC98A" />
+    <!-- mắt tròn to -->
+    <path android:pathData="M38,50m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0" android:fillColor="#5B4632" />
+    <path android:pathData="M70,50m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0" android:fillColor="#5B4632" />
+    <path android:pathData="M40,47m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" android:fillColor="#FFFFFF" />
+    <path android:pathData="M72,47m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" android:fillColor="#FFFFFF" />
+    <!-- miệng há chờ ăn -->
+    <path android:pathData="M54,68m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0" android:fillColor="#8A5A44" />
+    <!-- giọt nước miếng -->
+    <path android:pathData="M62,72 Q66,78 62,80 Q58,78 62,72" android:fillColor="#A8D8EA" />
+</vector>

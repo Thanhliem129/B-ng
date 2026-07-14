@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme nền tảng, không cần AppCompat — UI vẽ bằng Compose -->
+    <style name="Theme.BongApp" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bông buồn ngủ: mắt nhắm, chữ z -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <path android:pathData="M54,54m-50,0a50,50 0,1 1,100 0a50,50 0,1 1,-100 0" android:fillColor="#D8E4F0" />
+    <path android:pathData="M54,54m-42,0a42,42 0,1 1,84 0a42,42 0,1 1,-84 0" android:fillColor="#FFD9A8" />
+    <path android:pathData="M28,22 L38,34 L24,38 Z" android:fillColor="#FFC98A" />
+    <path android:pathData="M80,22 L70,34 L84,38 Z" android:fillColor="#FFC98A" />
+    <!-- mắt nhắm cong xuống -->
+    <path android:pathData="M32,50 Q38,56 44,50" android:strokeColor="#5B4632" android:strokeWidth="4" android:strokeLineCap="round" android:fillColor="#00000000" />
+    <path android:pathData="M64,50 Q70,56 76,50" android:strokeColor="#5B4632" android:strokeWidth="4" android:strokeLineCap="round" android:fillColor="#00000000" />
+    <!-- miệng nhỏ -->
+    <path android:pathData="M51,66 Q54,69 57,66" android:strokeColor="#5B4632" android:strokeWidth="3" android:strokeLineCap="round" android:fillColor="#00000000" />
+    <!-- zZ -->
+    <path android:pathData="M76,20 L86,20 L76,30 L86,30" android:strokeColor="#7A8FB8" android:strokeWidth="3.5" android:strokeLineCap="round" android:strokeLineJoin="round" android:fillColor="#00000000" />
+    <path android:pathData="M88,10 L95,10 L88,17 L95,17" android:strokeColor="#7A8FB8" android:strokeWidth="2.5" android:strokeLineCap="round" android:strokeLineJoin="round" android:fillColor="#00000000" />
+</vector>
